@@ -24,6 +24,27 @@ Route::get('/register', function () {
     return view('register');
 })->name('register');
 
+
+Route::get('/kuis', function () {
+    return view('kuis');
+})->name('kuis');
+
+Route::get('/daftar-kuis}', function () {
+    return view('listkuis');
+})->name('listkuis');
+
+Route::get('/selesai', function () {
+    return view('selesai');
+})->name('selesai');
+
+Route::get('/pengajar', function () {
+    return view('pengajar');
+})->name('pengajar');
+
+Route::get('/buat-kuis', function () {
+    return view('buat-kuis');
+})->name('buat-kuis');
+
 Route::post('/register', [AkunController::class, 'store'])->name('akun.store');
 Route::get('/login', [AkunController::class, 'login'])->name('login');
 Route::post('/login', [AkunController::class, 'authenticate'])->name('authenticate');
