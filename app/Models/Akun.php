@@ -19,7 +19,7 @@ class Akun extends Authenticatable
      */
     protected $table = 'akun';
     protected $fillable = [
-        'name',
+        'nama',
         'email',
         'password',
     ];
@@ -42,4 +42,27 @@ class Akun extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function pengajar()
+    {
+        return $this->hasOne(Pengajar::class);
+    }
+
+    public function peserta()
+    {
+        return $this->hasOne(Peserta::class);
+    }
+
+    
+    public function role()
+    {
+        if($this->peserta!=null)
+        {
+            return 'peserta';
+        }
+        elseif($this->pengajar!=null)
+        {
+            return 'pengajar';
+        }
+    }
 }

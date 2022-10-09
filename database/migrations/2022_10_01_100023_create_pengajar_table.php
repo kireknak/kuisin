@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('pengajar', function (Blueprint $table) {
             $table->id();
             $table->foreignId('akun_id')->constrained('akun');
+            $table->timestamps();
         });
     }
 

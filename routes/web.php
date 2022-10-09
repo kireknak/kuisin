@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AkunController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+Route::get('/register', function () {
+    return view('register');
+})->name('register');
+
+Route::post('/register', [AkunController::class, 'store'])->name('akun.store');
+Route::get('/login', [AkunController::class, 'login'])->name('login');
+Route::post('/login', [AkunController::class, 'authenticate'])->name('authenticate');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+require __DIR__.'/auth.php';

@@ -15,11 +15,10 @@ return new class extends Migration
     {
         Schema::create('pasangan_jawaban', function (Blueprint $table) {
             $table->id();
-            $table->foreignKey('jawaban_soal_id')->constained('jawaban_soal');
+            $table->foreignId('jawaban_soal_id')->constained('jawaban_soal');
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *

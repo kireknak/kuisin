@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('peserta', function (Blueprint $table) {
             $table->id();
-            $table->string('nickname',32);
+            $table->string('nickname',32)->nullable();
             $table->foreignId('akun_id')->constrained('akun');
+            $table->timestamps();
         });
     }
 
